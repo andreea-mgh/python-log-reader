@@ -2,7 +2,7 @@ import unittest
 from functions import *
 from readfile import *
 
-testpath = "example.txt"
+testpath = "test_logs.txt"
 
 class TestExercises(unittest.TestCase):
 
