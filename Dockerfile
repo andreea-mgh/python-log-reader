@@ -1,7 +1,7 @@
 FROM python:3.9-slim
 
 WORKDIR /app
-COPY ./py /app
+COPY py/ /app/
 RUN chmod +x main.py
 
 # COPY requirements.txt ./
