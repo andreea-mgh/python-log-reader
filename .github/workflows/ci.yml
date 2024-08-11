@@ -7,12 +7,29 @@ on:
     branches: [ "main" ]
 
 jobs:
-
-  build:
-
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v2
+
     - name: Build Docker image
-      run: docker build . --file Dockerfile --tag python-log-reader
+      run: docker build -t python-log-reader .
+
+    - name: Run Docker container
+      run: |
+        docker run --name test_container -d python-log-reader
+        # Replace with your actual test commands if needed
+
+    - name: Run unittest tests
+      run: |
+        docker exec test_container python -m unittest discover -s tests
+
+    - name: Stop and remove container
+      run: |
+        docker stop test_container
+        docker rm test_container
