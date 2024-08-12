@@ -41,8 +41,8 @@ jobs:
 
     - name: Push Docker image
       run: |
-        docker tag python-log-reader ghcr.io/meghe/python-log-reader:latest
-        docker push ghcr.io/meghe/python-log-reader:latest
+        docker tag python-log-reader meghe/python-log-reader:latest
+        docker push meghe/python-log-reader:latest
         
   
   # push-image:
