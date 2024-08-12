@@ -47,6 +47,10 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+        
+    - name: Build Docker image
+      run: docker build -t python-log-reader .
+
     - name: Push Docker image
       run: |
         docker tag python-log-reader ghcr.io/meghe/python-log-reader:latest
