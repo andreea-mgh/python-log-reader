@@ -23,7 +23,6 @@ jobs:
     - name: Run Docker container
       run: |
         docker run --name test_container -d --memory="4g" python-log-reader
-        # Replace with your actual test commands if needed
 
     # - name: Run unittest tests
     #   run: |
@@ -49,6 +48,6 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push Docker image
-      run: /
+      run: |
         docker tag python-log-reader ghcr.io/meghe/python-log-reader:latest
         docker push ghcr.io/meghe/python-log-reader:latest
