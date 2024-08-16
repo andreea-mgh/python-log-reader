@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-log-reader
+  labels:
+    app: python-log-reader
+  namespace: techtrek
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-log-reader
+  template:
+    metadata:
+      labels:
+        app: python-log-reader
+    spec:
+      containers:
+      - name: python-log-reader
+        image: docker.io/meghe/python-log-reader:latest
+        command: ["/bin/sh", "-c", "python3 /app/main.py; while true; do sleep 3600; done"]
+        ports:
+        - containerPort: 8080
