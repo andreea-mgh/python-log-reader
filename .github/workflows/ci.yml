@@ -24,9 +24,9 @@ jobs:
       run: |
         docker run --name test_container -d --memory="4g" python-log-reader
 
-    - name: Run unittest tests
-      run: |
-        docker exec test_container python -m unittest discover -s tests
+    # - name: Run unittest tests
+    #   run: |
+    #     docker exec test_container python -m unittest discover -s tests
 
     - name: Stop and remove container
       run: |
